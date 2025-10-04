@@ -1,0 +1,65 @@
+{%- set lang_attr = 'en' if language == None else (language | replace('_', '-')) %}
+
+{%- block html_doctype -%}
+<!DOCTYPE html>
+{%- endblock %}
+<html class="writer-html5" lang="{{ lang_attr }}" {% if content_root %} data-content_root="{{ content_root }}"{% endif %}>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta charset="UTF-8">
+	{%- block html_title %}
+		<title>{{ title|striptags|e }} | {{ project|e }}</title>
+	{%- endblock %}
+
+	{%- for css_file in css_files %}
+		{%- if css_file|attr("filename") %}
+			{{ css_tag(css_file) }}
+		{%- else %}
+			<link rel="stylesheet" href="{{ pathto(css_file, 1)|escape }}" type="text/css" />
+		{%- endif %}
+	{%- endfor %}
+
+	{%- if pageurl %}
+    <link rel="canonical" href="{{ pageurl|e }}" />
+    {%- endif %}
+
+	{%- block html_link_tags %}
+	    {%- if hasdoc('about') %}
+		<link rel="author" title="{{ _('About these documents') }}" href="{{ pathto('about') }}" />
+		{%- endif %}
+		{%- if hasdoc('genindex') %}
+		<link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
+		{%- endif %}
+		{%- if hasdoc('search') %}
+			<link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
+		{%- endif %}
+		{%- if hasdoc('copyright') %}
+		<link rel="copyright" title="{{ _('Copyright') }}" href="{{ pathto('copyright') }}" />
+		{%- endif %}
+		{%- if next %}
+			<link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
+		{%- endif %}
+		{%- if prev %}
+			<link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
+		{%- endif %}
+	{% endblock %}
+
+	{%- block html_seo %}{% endblock -%}
+</head>
+<body>
+	<div class="page-wrapper">
+		<!-- top bar with logo, menu and search box -->
+		{% block page_header %}
+            {% include "partials/header.html" %}
+        {% endblock %}
+		{% block page_content %} {%- endblock %}
+	</div>
+	{%- block scripts -%}
+		<script src="{{ pathto('_static/js/theme.js', 1) }}" defer></script>
+		{%- for scriptfile in script_files %}
+			{{ js_tag(scriptfile) }}
+		{%- endfor %}
+	{%- endblock %}
+	<div class="floating-tag">{{ corpo_template }}</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{%- extends "!layout.html" %}
+
+{%- set last_updated_value = meta.last_updated if meta and meta.last_updated else last_updated -%}
+{% set is_index = pagename.endswith('index') %}
+
+{% block page_content %}
+    <div class="blog{% if is_index %} blog-index{% endif %}">
+        <div class="hero">
+            <div class="content"{% if meta and meta.title_image%} style="background-image: url({{ pathto(meta.title_image, 1) }})"{% endif %}>
+                <h1>{{ title }}<a class="headerlink" href="#" title="{{ _('Link to this heading') }}">¶</a></h1>
+                {% if meta and meta.subtitle %}<p class="subtitle">{{ meta.subtitle }}</p>{% endif %}
+                {% if not is_index %}
+                    <div class="details">
+                        <p class="last-updated"><span>{%- trans last_updated=last_updated|e %}Last updated on {{ last_updated_value }}{% endtrans %}</span></p>
+                        <p class="details">{{ _('By') }} <span class="author">{{ meta.author if meta and meta.author else project }}</span></p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="body">
+            {#  the role 'main' here is essential for 'searchtool.js' to retrieve context information  #}
+            <div {% if not is_index %}class="content"{% endif %} role="main">
+                {%- block content %}
+                <article class="rst-content" role="article">
+                    {{ corpo_body if corpo_body else body }}
+                </article>
+                {% endblock %}
+            </div>
+            {% if not is_index %}
+                <div class="sidebar"></div>
+            {% endif %}
+        </div>
+        {% block footer %}
+            <div class="cc-content-footer">
+                {%- include "partials/statement.html" %}
+                {%- include "partials/footer-links.html" %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

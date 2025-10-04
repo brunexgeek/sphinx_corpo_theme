@@ -1,0 +1,169 @@
+@use "variables.scss" as *;
+
+.blog {
+    max-width: 1200px;
+    margin: 0 auto 2rem auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 360px;
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    /*
+    * When using menu bar (which is fixed) we need to add extra space on
+    * the top to prevent overlap.
+    */
+    #cc-menu-bar + & {
+        padding-top: $cc-menu-bar-height;
+    }
+
+    .hero {
+        margin-bottom: 2rem;
+
+        .content {
+            background-color: $cc-text-primary;
+            color: #fff;
+            padding: 2rem 6rem 2rem 2rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 15rem;
+
+            p {
+                margin: 0;
+            }
+
+            h1 {
+                margin-bottom: .2rem;
+                font-weight: 600;
+            }
+
+            .subtitle {
+                font-size: 1.4rem;
+                margin-bottom: 1rem;
+                flex: 1;
+            }
+        }
+    }
+
+    .body {
+        display: flex;
+        margin-bottom: 2rem;
+        flex: 1;
+        flex-direction: row;
+
+        @media (max-width: 1024px) {
+            flex-direction: column;
+        }
+
+        .content {
+            margin: 0 auto;
+            flex: 0 0 75%;
+            padding: 0 1rem;
+            /*max-width: 850px;*/
+            /*min-width: 720px;*/
+        }
+
+        .sidebar {
+            flex: 0 0 25%;
+        }
+    }
+
+    .cc-content-footer .cc-footer-notice {
+        background-color: transparent;
+        border: none;
+        background-color: #161616;
+        color: #fff;
+
+        .statement p,
+        .copyright p {
+            font-size: .9rem !important;
+            line-height: 1.2rem !important;
+        }
+    }
+}
+
+
+.blogposts {
+    margin: 0 1rem;
+
+    .page {
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+
+        @media (max-width: 720px) {
+            grid-template-columns: 1fr;
+        }
+
+        a {
+            text-decoration: none;
+            color: $cc-text-primary;
+            background-color: $cc-text-inverted;
+            display: block;
+            transition: background-color 110ms, border 110ms, color 110ms;
+            border: 2px solid $cc-text-inverted;
+
+            &:hover {
+                /*color: $cc-text-inverted;
+                background-color: $cc-text-primary;*/
+                text-decoration: none;
+                border: 2px solid $cc-text-primary;
+                background-color: $text-lighter;
+            }
+        }
+
+        li {
+            list-style: none;
+            margin: 0 !important;
+            padding: 0;
+            display: flex;
+
+            @media (max-width: 720px) {
+                margin: 0 1rem 0 1rem !important
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .title,
+            .description {
+                display: block;
+                margin: 0 0 1rem 0;
+            }
+
+            .title {
+                margin: 0 0 1.5rem 0;
+            }
+        }
+    }
+
+    .navigation {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        input {
+            cursor: pointer;
+            display: block;
+            border: 1px solid $cc-border-gray;
+            width: 2rem;
+            height: 2rem;
+            margin-left: .5rem;
+            font-size: 1.1rem;
+
+            &.selected {
+                border-color: $cc-link-primary;
+                color: $cc-link-primary;
+            }
+        }
+    }
+}

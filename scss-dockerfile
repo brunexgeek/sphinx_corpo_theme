@@ -1,0 +1,6 @@
+FROM node:latest
+
+RUN npm install -g sass
+
+WORKDIR /scss
+ENTRYPOINT ["sass"]

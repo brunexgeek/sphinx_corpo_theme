@@ -1,0 +1,33 @@
+<article class="rst-content" role="article">
+    {% if corpo_title %}
+        {% if pagename == master_doc %}
+            <h1>{{ project }}<a class="headerlink" href="#" title="{{ _('Link to this heading') }}">¶</a></h1>
+        {% else %}
+            {{ corpo_title }}
+        {% endif %}
+        <div id="lastModifiedDate"><span>{%- trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}</span></div>
+    {% endif %}
+    <div class="body">
+        {{ corpo_body if corpo_body else body }}
+    </div>
+    {% if theme_show_child_topics and corpo_local_toc_map %}
+    <div class="toctree-wrapper compound">
+        <p class="caption" role="heading"><span class="caption-text">{{ _('Topics in this section') }}:</span></p>
+        <ul>
+            {% for item in corpo_local_toc_map %}
+                <li class="toctree-l1"><a class="reference internal" href="{{ item.url }}">{{ item.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% if theme_show_parent_topic and corpo_parent %}
+    <div class="toctree-wrapper compound">
+        <p class="caption" role="heading">
+            <span class="caption-text">{{ _('Parent topic') }}:</span>
+        </p>
+        <ul>
+            <li class="toctree-l1"><a class="reference internal" href="{{ corpo_parent.url }}">{{ corpo_parent.title }}</a></li>
+        </ul>
+    </div>
+    {% endif %}
+</article>

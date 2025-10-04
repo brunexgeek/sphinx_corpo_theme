@@ -1,0 +1,19 @@
+{%- if theme_footer_links -%}
+    <div class="cc-footer-links">
+        <div class="nav-logo">
+        </div>
+        {%- for item in theme_footer_links %}
+            {%- if item.title and item.url %}
+                <div class="nav-item">
+                    <a href="{{ item.url }}">{{ item.title|striptags|e }}</a>
+                </div>
+            {%- endif %}
+        {%- endfor %}
+        {%- if copyright and not generated_statement %}
+        <div class="nav-spacer"></div>
+        <div class="nav-copyright">
+            <span>&copy; {{ copyright|e }}</span>
+        </div>
+        {%- endif -%}
+    </div>
+{%- endif -%}

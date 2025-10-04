@@ -1,0 +1,12 @@
+{% set truncate_size = 32 %}
+<nav aria-label="{{ _('Breadcrumbs') }}">
+    <ul class="cc-breadcrumbs">
+        {% if pagename != master_doc %}
+            <li class="breadcrumb-item"><a aria-label="{{ project|striptags|e }}" title="{{ project|striptags|e }}" href="{{ pathto(master_doc) }}">{{ project|truncate(truncate_size)|e }}</a></li>
+            {%- for doc in parents -%}
+                <li class="breadcrumb-item"><a aria-label="{{ doc.title|striptags|e }}" title="{{ doc.title|striptags|e }}" href="{{ doc.link|e }}">{{ doc.title|truncate(truncate_size)|e }}</a></li>
+            {%- endfor -%}
+            <li class="breadcrumb-active">{{ title|striptags|e }}</li>
+        {% endif %}
+    </ul>
+</nav>

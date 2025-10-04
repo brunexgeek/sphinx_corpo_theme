@@ -1,0 +1,227 @@
+@use "../variables.scss" as *;
+
+// Tables
+//
+// Located in `wyrm_core/_tables.sass`. Table classes are additive so you can mix and match as you need.
+//
+// Markup:
+// <table class="cc-table {$modifiers}">
+//  <thead>
+//    <tr>
+//      <th>Game</th>
+//      <th>Developer</th>
+//      <th>Description</th>
+//    </tr>
+//  </thead>
+//  <tbody>
+//    <tr>
+//      <td>
+//        Baldur's Gate II
+//      </td>
+//      <td>
+//        Bioware
+//      </td>
+//      <td>
+//        Boo has a space hamster. Imoen whines a bunch.
+//      </td>
+//    </tr>
+//    <tr>
+//      <td>
+//        Icewind Dale II
+//      </td>
+//      <td>
+//        Black Isle
+//      </td>
+//      <td>
+//        Fly around on an airship, then kill tons of ice monsters.
+//      </td>
+//    </tr>
+//    <tr>
+//      <td>
+//        Temple of Elemental Evil
+//      </td>
+//      <td>
+//        Trokia
+//      </td>
+//      <td>
+//        Turn based! Do everything 10 times slower.
+//      </td>
+//    </tr>
+//  </tbody>
+// </table>
+//
+// .full-width                - 100% width
+// .cc-table-bordered         - Border the table itself.
+// .cc-table-bordered-rows    - Border just the rows.
+// .cc-table-bordered-all     - Border the columns, rows, and the table.
+// .cc-table-striped          - Alternating row colors.
+//
+// Styleguide 3
+
+.cc-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    margin-bottom: $base-line-height;
+
+    caption {
+        color: #000;
+        font: italic 85%/1 arial, sans-serif;
+        padding: 1em 0;
+        text-align: center;
+    }
+
+    td,
+    th {
+        font-size: $table-font-size;
+        margin: 0;
+        overflow: visible;
+        padding: $table-padding-size;
+    }
+
+    td:first-child,
+    th:first-child {
+        border-left-width: 0;
+    }
+
+    thead {
+        color: #000;
+        text-align: left;
+        vertical-align: bottom;
+        white-space: nowrap;
+
+        th {
+            font-weight: $base-font-family-bold;
+            border-bottom: solid 2px $table-border-color;
+
+            p {
+                font-weight: $base-font-family-bold;
+            }
+        }
+    }
+
+    td {
+        background-color: transparent;
+        vertical-align: middle;
+    }
+}
+
+.cc-table td p {
+    line-height: $base-line-height * .75;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.cc-table .cc-table-cell-min {
+    width: 1%;
+    padding-right: 0;
+
+    input[type=checkbox],
+    input[type=checkbox] {
+        margin: 0;
+    }
+}
+
+.cc-table-secondary {
+    color: $text-medium;
+    font-size: 90%;
+}
+
+.cc-table-tertiary {
+    color: $text-medium;
+    font-size: 80%;
+}
+
+// Striped
+
+.cc-table-odd td,
+.cc-table-striped tr:nth-child(2n-1) td {
+    background-color: $table-stripe-color;
+}
+
+.cc-table-backed {
+    background-color: $table-stripe-color;
+}
+
+/* BORDERED TABLES*/
+
+.cc-table-bordered-all {
+    border: 1px solid $table-border-color;
+
+    td {
+        border-bottom: 1px solid $table-border-color;
+        border-left: 1px solid $table-border-color;
+    }
+
+    tbody>tr:last-child td {
+        border-bottom-width: 0;
+    }
+}
+
+.cc-table-bordered {
+    border: 1px solid $table-border-color;
+}
+
+.cc-table-bordered-rows {
+    td {
+        border-bottom: 1px solid $table-border-color;
+    }
+
+    tbody>tr:last-child td {
+        border-bottom-width: 0;
+    }
+}
+
+.cc-table-horizontal {
+    tbody>tr:last-child td {
+        border-bottom-width: 0;
+    }
+
+    td,
+    th {
+        border-width: 0 0 1px 0;
+        border-bottom: 1px solid $table-border-color;
+    }
+
+    tbody>tr:last-child td {
+        border-bottom-width: 0;
+    }
+}
+
+/* RESPONSIVE TABLES*/
+
+.cc-table-responsive {
+    margin-bottom: $base-line-height;
+    max-width: 100%;
+    overflow: auto;
+
+    table {
+        margin-bottom: 0 !important;
+
+        td,
+        th {
+            white-space: nowrap;
+        }
+    }
+}
+
+// Remove the large vertical space between citations and footnotes
+.cc-table-responsive.citation,
+.cc-table-responsive.footnote {
+    margin-bottom: 0;
+}
+
+// Re-add vertical space to element directly following citation and footnotes,
+// if the following element is of a different type
+.cc-table-responsive.citation+ :not(.citation),
+.cc-table-responsive.footnote+ :not(.footnote) {
+    margin-top: $base-line-height;
+}
+
+// Re-add vertical space after citation and footnotes if it is the last child of a parent
+.cc-table-responsive.citation:last-child,
+.cc-table-responsive.footnote:last-child {
+    margin-bottom: $base-line-height;
+}

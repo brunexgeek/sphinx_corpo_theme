@@ -1,0 +1,97 @@
+@use "sass:color";
+
+$sans-serif-font-family: 'IBM Plex Sans', system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+$monospace-font-family: 'IBM Plex Mono', system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', monospace;
+
+
+$cc-background-gray: #f4f4f4;
+$cc-border-gray: #d4d4d4;
+$cc-toc-background-level1: $cc-background-gray/*#e7e7e7*/;
+$cc-toc-background-level2: $cc-toc-background-level1;
+$cc-toc-background-level3: color.adjust($cc-toc-background-level2, $lightness: 5%);
+$cc-toc-background-level4: color.adjust($cc-toc-background-level3, $lightness: 5%);
+$cc-toc-background-level5: color.adjust($cc-toc-background-level4, $lightness: 5%);
+$cc-toc-background-level6: color.adjust($cc-toc-background-level5, $lightness: 5%);
+$cc-toc-background-level7: color.adjust($cc-toc-background-level6, $lightness: 5%);
+
+$base-line-height:                    1.5rem;
+$base-font-size:                      16px;
+$base-font-family-bold:               600;
+$text-color:                          hsl(0,0%,25%) !default;
+$text-dark:                           color.adjust($text-color, $lightness: 15%) !default;
+$text-medium:                         color.adjust($text-color, $lightness: 25%) !default;
+$text-light:                          color.adjust($text-color, $lightness: 45%) !default;
+$text-lighter:                        color.adjust($text-color, $lightness: 60%) !default;
+$link-color:                          #0f62fe;//#0062ff
+$link-active-color:                   #e0e0e0;
+
+$color-warning: #ffedcc;
+$color-note: #e7f2fa;
+$code-color: #D93423;
+
+$cc-background:                       #ffffff;
+$cc-body-02-font-size:                1rem;
+$cc-body-02-font-weight:              400;
+$cc-body-02-letter-spacing:           0;
+$cc-body-02-line-height:              1.5;
+$cc-heading-1-font-size:              0.875rem;
+$cc-heading-1-font-weight:            600;
+$cc-heading-1-letter-spacing:         0.16px;
+$cc-heading-1-line-height:            1.42857;
+$cc-heading-2-font-size:              1rem;
+$cc-heading-2-font-weight:            600;
+$cc-heading-2-letter-spacing:         0;
+$cc-heading-2-line-height:            1.5;
+$cc-heading-3-font-size:              1.25rem;
+$cc-heading-3-font-weight:            400;
+$cc-heading-3-letter-spacing:         0;
+$cc-heading-3-line-height:            1.4;
+$cc-heading-4-font-size:              1.75rem;
+$cc-heading-4-font-weight:            400;
+$cc-heading-4-letter-spacing:         0;
+$cc-heading-4-line-height:            1.28572;
+$cc-heading-5-font-size:              2rem;
+$cc-heading-5-font-weight:            400;
+$cc-heading-5-letter-spacing:         0;
+$cc-heading-5-line-height:            1.25;
+$cc-heading-6-font-size:              2.625rem;
+$cc-heading-6-font-weight:            300;
+$cc-heading-6-letter-spacing:         0;
+$cc-heading-6-line-height:            1.199;
+$cc-link-primary:                     #0062fe;
+$cc-text-primary:                     #161616;
+$cc-text-inverted:                    color.invert($cc-text-primary);
+
+$cc-border-interactive:               #0f62fe;
+$cc-layer-selected-01:                #e0e0e0;
+$cc-text-secondary:                   #525252;
+$cc-layer-selected-01:                #e0e0e0;
+$cc-layer-active-01:                  #c6c6c6;
+$cc-background:                       #ffffff;
+$cc-icon-on-color-disabled:           #8d8d8d;
+$cc-icon-on-color-disabled:           #8d8d8d;
+$cc-label-02-font-size:               0.875rem;
+$cc-label-02-font-weight:             400;
+$cc-label-02-letter-spacing:          0.16px;
+$cc-body-02-font-size:                1rem;
+$cc-body-02-font-weight:              400;
+$cc-body-02-letter-spacing:           0;
+$cc-body-01-font-size:                .875rem;
+$cc-background:                       #ffffff;
+$cc-background-hover:                 rgba(141, 141, 141, 0.12);
+
+
+// Tables
+$table-background-color:              transparent;
+$table-border-color:                  $cc-border-gray;
+$table-stripe-color:                  $cc-background-gray;
+$table-bg-hover-color:                hsl(0,0%,85%);
+$table-head-background-color:         $table-border-color;
+$table-font-size:                     95%;
+$table-padding-size:                  calc($base-font-size / 2) $base-font-size;
+
+$cc-paragraph-line-height:            $base-line-height;
+$cc-toc-link--line-height:            1.3rem;
+$cc-footer-link--line-height:         1.4rem;
+
+$cc-menu-bar-height:                  3rem;

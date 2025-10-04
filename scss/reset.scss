@@ -1,0 +1,237 @@
+@use "variables.scss" as *;
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    font: inherit;
+    font-feature-settings: "liga" 1;
+    font-size: 100%;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+button,
+select,
+input,
+textarea {
+    border-radius: 0;
+    font-family: inherit
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block
+}
+
+body {
+    background-color: $cc-background;
+    color: $cc-text-primary;
+    line-height: 1rem;
+}
+
+ol,
+ul {
+    list-style: none
+}
+
+blockquote,
+q {
+    quotes: none
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+    content: none
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    font-weight: 400;
+    font-family: $sans-serif-font-family;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+code,
+pre {
+    font-family: $monospace-font-family;
+    font-size: .90rem;
+}
+
+strong {
+    font-weight: 600;
+}
+
+h1 {
+    font-size: $cc-heading-6-font-size;
+    font-weight: $cc-heading-6-font-weight;
+    line-height: $cc-heading-6-line-height;
+    letter-spacing: $cc-heading-6-letter-spacing;
+}
+
+h2 {
+    font-size: $cc-heading-5-font-size;
+    font-weight: $cc-heading-5-font-weight;
+    line-height: $cc-heading-5-line-height;
+    letter-spacing: $cc-heading-5-letter-spacing;
+}
+
+h3 {
+    font-size: $cc-heading-4-font-size;
+    font-weight: $cc-heading-4-font-weight;
+    line-height: $cc-heading-4-line-height;
+    letter-spacing: $cc-heading-4-letter-spacing;
+}
+
+h4 {
+    font-size: $cc-heading-3-font-size;
+    font-weight: $cc-heading-3-font-weight;
+    line-height: $cc-heading-3-line-height;
+    letter-spacing: $cc-heading-3-letter-spacing;
+}
+
+h5 {
+    font-size: $cc-heading-2-font-size;
+    font-weight: $cc-heading-2-font-weight;
+    line-height: $cc-heading-2-line-height;
+    letter-spacing: $cc-heading-2-letter-spacing;
+}
+
+h6 {
+    font-size: $cc-heading-1-font-size;
+    font-weight: $cc-heading-1-font-weight;
+    line-height: $cc-heading-1-line-height;
+    letter-spacing: $cc-heading-1-letter-spacing;
+}
+
+p {
+    font-size: $cc-body-02-font-size;
+    font-weight: $cc-body-02-font-weight;
+    line-height: $cc-body-02-line-height;
+    letter-spacing: $cc-body-02-letter-spacing;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: $cc-link-primary;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+em {
+    font-style: italic
+}

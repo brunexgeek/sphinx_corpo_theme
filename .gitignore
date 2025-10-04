@@ -1,0 +1,5 @@
+sphinx_corpo_theme/static/css/*.map
+__pycache__
+*egg-info/
+build/
+dist/

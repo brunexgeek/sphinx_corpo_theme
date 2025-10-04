@@ -1,0 +1,52 @@
+{%- macro generate_toc(entries) %}
+	{%- if entries %}
+        {%- for item in entries %}
+            {%- if item.title -%}
+            <div class="cc-section-title">
+                <span>{{ item.title|striptags|e }}</span>
+            </div>
+            {%- endif %}
+            {%- if item.children -%}
+                <ul class="{% for x in item.children[0].classes %}{{ x }} {% endfor %}cc-toc-list">
+                    {%- for sub in item.children %}
+                        {{- generate_toc_item(sub) }}
+                    {%- endfor %}
+                </ul>
+            {%- endif %}
+        {%- endfor %}
+    {%- else %}
+    <h1>empty</h1>
+    {%- endif %}
+{%- endmacro %}
+
+{%- macro generate_toc_item(item) -%}
+<li class="{% for x in item.classes %}{{ x }} {% endfor %}">
+	<div class="cc-toc-row">
+		<a {%- if item.is_path %} data-path="true"{% endif %}
+           {%- if item.is_active %} aria-current="page" {% endif %}
+           href="{{ item.url }}" class="cc-toc-link{% if not item.children %} cc-expand-placeholder{% endif %}" rel="noreferrer">{{ item.title|striptags|e }}</a>
+		{%- if item.children -%}
+            {# use only one svg and rotate it (using CSS) while toggling #}
+            <div data-id="{{ item.id }}" title="Expand" id="cc-expand-{{ item.id }}" class="cc-expand-icon icon-down" {% if item.is_path %}style="display: none"{% endif %}>
+                <svg focusable="false" preserveAspectRatio="xMidYMid meet" fill="currentColor" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" class="cc-expand-icon" xmlns="http://www.w3.org/2000/svg"><path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"></path></svg>
+            </div>
+            <div data-id="{{ item.id }}" title="Collapse" id="cc-collapse-{{ item.id }}" class="cc-expand-icon icon-up" {% if not item.is_path %}style="display: none"{% endif %}>
+                <svg focusable="false" preserveAspectRatio="xMidYMid meet" fill="currentColor" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M8 5L13 10 12.3 10.7 8 6.4 3.7 10.7 3 10z"></path></svg>
+            </div>
+		{%- endif -%}
+	</div>
+    {%- if item.children -%}
+	    <div id="cc-toc-children-{{ item.id }}" class="cc-toc-children" {% if not item.is_path %}style="display: none"{% endif %}>
+            <ul class="{% for x in item.children[0].classes %}{{ x }} {% endfor %}cc-toc-list">
+                {%- for sub in item.children %}
+                    {{- generate_toc_item(sub) }}
+                {%- endfor -%}
+            </ul>
+        </div>
+    {%- endif %}
+</li>
+{%- endmacro -%}
+
+<nav aria-label="{{ _('Table of Contents') }}" class="cc-toc-nav">
+    {{- generate_toc(corpo_toc_map) -}}
+</nav>

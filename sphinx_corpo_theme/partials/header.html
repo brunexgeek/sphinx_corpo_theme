@@ -1,0 +1,28 @@
+{% if theme_show_menu_bar and theme_menu_bar_items %}
+<div id="cc-menu-bar">
+    <div class="header-container">
+        <header>
+            <!-- logo and title -->
+            <div class="brand">
+                {%- if theme_company_logo and theme_company_website -%}
+                <a href="{{ theme_company_website }}" aria-label="{{ theme_company_name }}">{{ theme_company_logo }}</a>
+                {%- endif -%}
+                <a href="{{ content_root }}" class="title">{{ project }}</a>
+            </div>
+            <!-- main navigation -->
+            <nav class="menu-nav">
+                <ul class="menu-list">
+                    {%- for item in theme_menu_bar_items %}
+                        {%- if item.title and (item.docname or item.url) %}
+                            {%- set url = pathto(item.docname) if item.docname else item.url -%}
+                            {%- set target = '_blank' if item.url else '_self' -%}
+                            {%- set target = item.target if item.target else target -%}
+                            <li><a href="{{ url }}" class="menu-item" target="{{ target }}"><span class="truncated">{{ item.title }}</span></a></li>
+                        {%- endif -%}
+                    {%- endfor -%}
+                </ul>
+            </nav>
+        </header>
+    </div>
+</div>
+{% endif %}

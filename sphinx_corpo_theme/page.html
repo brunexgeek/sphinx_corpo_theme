@@ -1,0 +1,93 @@
+{%- extends "!layout.html" %}
+
+{% if not corpo_root %}
+    {% set corpo_root = {'title': project, 'url': pathto(master_doc)} %}
+{% endif%}
+
+{% block page_content %}
+<div class="cc-body-container">
+    <div class="cc-sidebar-column ">
+        <div class="cc-toc-wrapper">
+            <div class="cc-toc-header">
+                <div class="cc-toc-product-section">
+                    <a {% if pagename == master_doc %} aria-current="page"{% endif %} href="{{ corpo_root.url }}" class="cc-product-name">{{ corpo_root.title|striptags|e }}</a>
+                    <div class="cc-product-version"><span class="version">{{ _('Version') }} {{ version|striptags|e }}</span></div>
+                </div>
+                <div class="cc-search-wrapper">
+                    <div role="search" aria-label="{{ _('search this documentation') }}" class="cc-search">
+                        <form method="get" action="{{ pathto('search.html', 1) }}" id="cc-search-form">
+                            <label for="search-input" class="cc-label">{{ _('Search') }}</label>
+                            <input autocomplete="off" class="cc-search-input" role="searchbox" name="q" id="search-input" placeholder="{{ _('search this documentation') }}" type="text" value="">
+                            <button type="submit" id="cc-search-button" title="{{ _('Search') }}">
+                                <svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-hidden="true" width="20" height="20" viewBox="0 0 32 32"><path d="M29,27.5859l-7.5521-7.5521a11.0177,11.0177,0,1,0-1.4141,1.4141L27.5859,29ZM4,13a9,9,0,1,1,9,9A9.01,9.01,0,0,1,4,13Z"></path></svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="cc-toc-content" role="navigation" aria-label="{{ _('Main navigation') }}">
+                {% include "partials/toc.html" %}
+            </div>
+            <div class="cc-toc-footer">
+                {% if theme_toc_extra_links %}
+                    {% for item in theme_toc_extra_links %}
+                        {% if item.title %}
+                            <div class="cc-toc-item">
+                                {% if not item.url %}
+                                    <a class="disabled" aria-disabled="false" aria-label="{{ item.title|striptags|e }}" href="#">
+                                {% else %}
+                                    <a aria-label="{{ item.title|striptags|e }}" target="_blank" href="{{ item.url|e }}">
+                                {% endif %}
+                                        <span>{{ item.title|striptags|e }}</span>
+                                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" fill="currentColor" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path>
+                                        </svg>
+                                    </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="cc-main-column">
+        <div class="cc-content-wrapper">
+            {%- block content %}
+                <div class="cc-content-header">
+                    {% include "partials/breadcrumbs.html" %}
+                </div>
+                {#  the role 'main' here is essential for 'searchtool.js' to retrieve context information  #}
+                <div class="cc-content-container" role="main">
+                    {% include "partials/article.html" %}
+                </div>
+                <div class="cc-content-footer">
+                    {%- if prev or next %}
+                    <div class="cc-topic-navigation">
+                        <div class="cc-nav-entry">
+                            {%- if prev %}
+                            <a href="{{ prev.link|e }}" class="cc-nav-link">
+                                <div>{{ _('Previous topic') }}</div>
+                                <div class="cc-nav-label">{{ prev.title|striptags|e }}</div>
+                            </a>
+                            {% endif %}
+                        </div>
+                        <div class="cc-nav-entry">
+                            {%- if next %}
+                            <a href="{{ next.link|e }}" class="cc-nav-link">
+                                <div>{{ _('Next topic') }}</div>
+                                <div class="cc-nav-label">{{ next.title|striptags|e }}</div>
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {%- include "partials/statement.html" %}
+                    {%- include "partials/footer-links.html" %}
+
+                </div>
+            {%- endblock -%}
+        </div>
+    </div>
+</div>
+{%- endblock %}

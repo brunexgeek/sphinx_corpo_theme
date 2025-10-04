@@ -1,0 +1,22 @@
+{%- extends "!layout.html" %}
+{% set title = _('Search') %}
+
+{%- block scripts %}
+    {{ super() }}
+    <script src="{{ pathto('_static/searchtools.js', 1) }}"></script>
+    <script src="{{ pathto('_static/language_data.js', 1) }}"></script>
+    <script defer src="{{ pathto('searchindex.js', 1) }}"></script>
+{%- endblock %}
+
+{% block content %}
+<div class="cc-content-container">
+    <noscript>
+        <div class="admonition warning">
+            <p>{% trans trimmed %}Please activate JavaScript to enable the search functionality.{% endtrans %}</p>
+        </div>
+    </noscript>
+    <p>{% trans trimmed %}Searching for multiple words only shows matches that contain all words.{% endtrans %}</p>
+    <p><span id="search-progress"></span></p>
+    <div id="search-results"></div>
+</div>
+{% endblock %}

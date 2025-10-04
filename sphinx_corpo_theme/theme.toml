@@ -1,0 +1,19 @@
+[theme]
+inherit = "basic"
+stylesheets = [
+    "css/priority.css",
+    "css/blog.css",
+    "css/styles.css"
+]
+
+[options]
+template_overrides = []
+show_menu_bar = false
+menu_bar_items = []
+show_child_topics = false
+show_parent_topic = false
+toc_extra_links = []
+footer_statement= ''
+footer_links= []
+toc_pruning = false
+

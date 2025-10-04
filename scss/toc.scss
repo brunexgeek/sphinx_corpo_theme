@@ -1,0 +1,198 @@
+@use "variables.scss" as *;
+
+.cc-toc-wrapper {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    bottom: 0;
+    width: var(--toc-width, 20em);
+}
+
+/*
+ * When using menu bar (which is fixed) we need to add extra space on
+ * the top to prevent overlap.
+ */
+#cc-menu-bar + .cc-body-container .cc-toc-wrapper {
+    top: $cc-menu-bar-height;
+}
+
+.cc-toc-footer {
+    background-color: $cc-background;
+    .cc-toc-item {
+        /*background-color: var(--cc-background-gray*/
+        border-top: 1px solid $cc-border-gray;
+        border-right: 1px solid $cc-border-gray;
+
+        a.disabled {
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        & > a,
+        & > span {
+            display: flex;
+            height: 3rem;
+            align-items: center;
+            padding: 0 1rem 0 2rem;
+
+            &.disabled {
+                color: $cc-icon-on-color-disabled;
+
+                & > svg {
+                    fill: $cc-icon-on-color-disabled;
+                }
+            }
+        }
+
+        & > a:hover {
+            background-color: $link-active-color;
+            text-decoration: none;
+        }
+
+        & > a > svg {
+            fill: $link-color;
+        }
+    }
+}
+
+.cc-toc-header {
+    flex: 0 0 2rem;
+    border-right: 1px solid var(--cc-border-gray);
+    border-bottom: 1px solid var(--cc-border-gray);
+    background-color: $cc-background;
+    z-index: 20;
+}
+
+.cc-toc-content {
+    flex: 1 1;
+    overflow: auto;
+    overflow-x: auto;
+    background-color: var(--cc-toc-background-level1);
+    border-right: 1px solid var(--cc-border-gray);
+    padding: 1rem 0 0 0;
+    overflow-x: auto;
+    z-index: 10;
+
+    .cc-section-title {
+        background-color: var(--cc-toc-background-level1);
+    }
+
+    .cc-section-title>a,
+    .cc-section-title>span {
+        display: flex;
+        height: 2.5rem;
+        align-items: center;
+        padding: 0 1rem 0 1rem;
+        font-weight: 600;
+    }
+
+    ul a {
+        line-height: 1rem;
+    }
+
+    .cc-toc-nav {
+        background-color: var(--cc-toc-background-level1);
+
+        ul.cc-toc {
+            margin-left: 0;
+        }
+    }
+
+    .toctree-l1 .cc-toc-row { padding-left: var(--cc-toc-padding); }
+    .toctree-l2 .cc-toc-row { padding-left: calc(var(--cc-toc-padding) * 2); }
+    .toctree-l3 .cc-toc-row { padding-left: calc(var(--cc-toc-padding) * 3); }
+    .toctree-l4 .cc-toc-row { padding-left: calc(var(--cc-toc-padding) * 4); }
+    .toctree-l5 .cc-toc-row { padding-left: calc(var(--cc-toc-padding) * 5); }
+    .toctree-l6 .cc-toc-row { padding-left: calc(var(--cc-toc-padding) * 6); }
+    .toctree-l7 .cc-toc-row { padding-left: calc(var(--cc-toc-padding) * 7); }
+
+    ul a li .cc-toc-row .cc-toc-narrowlink {
+        padding-top: .1rem;
+        padding-bottom: .1rem;
+        margin-top: 0px;
+        margin-bottom: 0px
+    }
+
+    ul li .cc-toc-row:hover a {
+        border-left: 4px solid var(--cds-border-interactive, #0f62fe);
+        background-color: $cc-layer-selected-01;
+    }
+
+    ul li .cc-toc-row a[data-path=true] {
+        font-weight: bold
+    }
+
+    ul li .cc-toc-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 99%;
+        margin: 2px auto;
+    }
+
+    .cc-toc-link {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+        flex: 1;
+        width: auto;
+        font-size: 1rem !important;
+        padding: .3rem .3rem .3rem var(--cc-toc-padding, 1.125rem);
+        color: $cc-text-secondary;
+        text-decoration: none;
+        vertical-align: top;
+        line-height: $cc-toc-link--line-height;
+        margin-right: 2px;
+        border-left: 4px solid $cc-background-gray;
+
+        &[data-path=true] {
+            font-weight: 600;
+        }
+
+        &.cc-expand-placeholder {
+            margin-right: 0;
+        }
+    }
+
+    ul li .cc-toc-row .cc-expand-icon {
+        width: 2rem;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    ul li .cc-toc-row:hover .cc-expand-icon {
+        background-color: $cc-layer-selected-01;
+    }
+
+    ul li .cc-toc-row .cc-expand-icon svg {
+        fill: $cc-text-secondary;
+        margin-top: .5rem;
+        /*right: .5rem;*/
+        position: inherit;
+    }
+
+    ul li .cc-expand-placeholder {
+        padding-right: 32px;
+    }
+
+    .cc-toc-row .cc-toc-link[aria-current=true],
+    .cc-toc-row:hover .cc-toc-link[aria-current=true] {
+        border-left-color: $link-color;
+        background-color: $link-active-color;
+    }
+}
+
+
+/*
+.toctree-l1 { background-color: var(--cc-toc-background-level1); }
+.toctree-l2 { background-color: var(--cc-toc-background-level2); }
+.toctree-l2 { background-color: var(--cc-toc-background-level2); }
+.toctree-l3 { background-color: var(--cc-toc-background-level3); }
+.toctree-l4 { background-color: var(--cc-toc-background-level4); }
+.toctree-l5 { background-color: var(--cc-toc-background-level5); }
+.toctree-l6 { background-color: var(--cc-toc-background-level6); }*/
+
+
+
+

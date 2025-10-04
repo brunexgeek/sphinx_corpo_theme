@@ -1,0 +1,268 @@
+@use "../variables.scss" as *;
+@use "table.scss";
+
+.rst-content {
+
+    table.docutils {
+        @extend .cc-table;
+        @extend .cc-table-bordered-all;
+
+        th {
+            border-color: $table-border-color;
+
+            html.writer-html5 & {
+                border: 1px solid $table-border-color;
+            }
+        }
+
+        html.writer-html5 & {
+
+            th>p,
+            td>p {
+                line-height: 1rem;
+                margin-bottom: 0rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        &:not(.field-list) {
+            @extend .cc-table-striped;
+        }
+
+        td .last,
+        td .last>*:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .align-center {
+       margin: auto;
+    }
+
+    h1 {
+        padding-right: 4rem;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin-bottom: 1rem;
+
+        &:hover .headerlink {
+            visibility: visible;
+        }
+    }
+
+    dt {
+        &:hover .headerlink {
+            visibility: visible;
+        }
+    }
+
+    dl dt span.classifier::before {
+        content: " : ";
+    }
+
+    p.centered {
+        text-align: center;
+    }
+
+    tt,
+    code {
+        white-space: nowrap;
+        font-size: 90%;
+        color: #D93423;
+    }
+
+    ul li,
+    ol li {
+        margin-left: 24px;
+    }
+
+    ul {
+        list-style-type: disc;
+    }
+
+    ol {
+        list-style-type: decimal;
+    }
+
+    dl {
+        margin-bottom: $base-line-height;
+
+        dt {
+            font-weight: bold;
+            margin-bottom: calc($base-line-height / 2);
+        }
+
+        // Most of the content within these dls are one liners, so I halve the normal margins.
+        p,
+        table,
+        ul,
+        ol {
+            margin-bottom: calc($base-line-height / 2);
+        }
+
+        // rST seems to want dds to be treated as the browser would, indented.
+        dd {
+            margin: 0 0 calc($base-line-height / 2) $base-line-height;
+            line-height: $base-line-height;
+
+            &>p:last-child,
+            &>ol:last-child,
+            &>ul:last-child,
+            &>table:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .toctree-wrapper {
+        margin: 2rem 0 2rem 1rem;
+
+        .caption {
+            font-weight: 600;
+        }
+
+        ul, ol {
+            list-style: none;
+            position: relative;
+            margin-left: 1rem;
+            margin-bottom: .5rem !important;
+
+            li {
+                margin-left: 0;
+
+                &::before {
+                    position: absolute;
+                    content: "–";
+                    inset-inline-start: calc(-1*1rem);
+                }
+
+                a {
+                    margin-bottom: .5rem;
+                    display: inline-block;
+                }
+            }
+        }
+
+    }
+
+    div.admonition {
+        margin: 0 2rem 1rem 2rem;
+        padding: 1rem;
+        border-left: .5rem solid #6ab0de;
+        border-right: 1px solid #6ab0de;
+        border-top: 1px solid #6ab0de;
+        border-bottom: 1px solid #6ab0de;
+        background-color: $color-note;
+
+        p.admonition-title {
+            font-weight: 600;
+        }
+
+        &.warning {
+            border-left: .5rem solid #f0b37e;
+            border-right: 1px solid #f0b37e;
+            border-top: 1px solid #f0b37e;
+            border-bottom: 1px solid #f0b37e;
+            background-color: #ffedcc;
+        }
+
+        &.tip {
+            border-left: .5rem solid #1abc9c;
+            border-right: 1px solid #1abc9c;
+            border-top: 1px solid #1abc9c;
+            border-bottom: 1px solid #1abc9c;
+            background-color: #dbfaf4;
+        }
+
+        &.important {
+            border-left: .5rem solid #1abc9c;
+            border-right: 1px solid #1abc9c;
+            border-top: 1px solid #1abc9c;
+            border-bottom: 1px solid #1abc9c;
+            background-color: #dbfaf4;
+        }
+
+        & > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    a[href^='http']::after {
+        content: "⎋\00a0";
+        -moz-transform: scale(-1, 1);
+        -o-transform: scale(-1, 1);
+        -webkit-transform: scale(-1, 1);
+        transform: scale(-1, 1);
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    a[href^='http']:hover::after {
+        text-decoration: underline;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .versionmodified {
+        font-style: italic;
+    }
+
+    p.rubric {
+        margin-bottom: 12px;
+        font-weight: 700;
+    }
+
+    code {
+        background: #fff;
+        border: 1px solid #e1e4e5;
+        padding: 1px 4px;
+    }
+
+    pre {
+        line-height: 1rem;
+    }
+
+    .highlight {
+        background: #f8f8f8;
+    }
+
+    div[class^="highlight"],
+    pre.literal-block {
+        border: 1px solid #bec1c2;
+        overflow-x: auto;
+        margin: 1px 0 24px;
+
+        div[class^="highlight"] {
+            padding: 0;
+            border: none;
+            margin: 0;
+        }
+
+        pre {
+            white-space: pre;
+            margin: 0;
+            padding: 12px;
+            display: block;
+            overflow: auto;
+        }
+    }
+
+}
+
+.headerlink {
+    visibility: hidden;
+    margin-left: 0.25em;
+    text-decoration: none;
+    font-size: 80%;
+
+    &:hover {
+        text-decoration: none;
+    }
+}

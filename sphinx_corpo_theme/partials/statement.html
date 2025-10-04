@@ -1,0 +1,13 @@
+{#- copyright and statement area #}
+
+{%- if theme_footer_statement or not theme_footer_links %}
+    {%- set generated_statement = True -%}
+    <div class="cc-footer-notice">
+        <div class="statement">
+            <p>{{ theme_footer_statement|e }}</p>
+        </div>
+        <div class="copyright">
+            <p>&copy; {{ copyright|e }}</p>
+        </div>
+    </div>
+{%- endif %}
