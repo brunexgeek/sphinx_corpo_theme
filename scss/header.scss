@@ -13,20 +13,21 @@
         right: 0;
         width: 100%;
         top: 0;
-        z-index: 9999;
+        z-index: 100;
         position: fixed;
         background-color: $cc-background;
     }
 
     header {
         position: fixed;
-        z-index: 8000;
+
         top: 0;
         right: 0;
         left: 0;
         display: flex;
         height: $cc-menu-bar-height;
         align-items: center;
+        border: none;
         border-bottom: 1px solid $cc-border-gray;
         /* background-color: #161616; */
     }
@@ -112,7 +113,7 @@
         display: flex;
         flex-direction: row;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-        z-index: 8000;
+        z-index: 300;
         top: 0;
         left: 0;
         background-color: $cc-background;
@@ -169,7 +170,8 @@
         height: 100%;
         align-items: center;
         padding: 0 1rem;
-        border: 2px solid transparent;
+        border: none;
+        border-bottom: 3px solid transparent;
         color: $text-dark;
         font-size: .875rem;
         font-weight: 400;

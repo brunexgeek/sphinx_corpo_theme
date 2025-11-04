@@ -7,25 +7,6 @@ from sphinx.util.console import colorize
 
 logger = logging.getLogger(__name__)
 
-class TocGroup():
-
-    def __init__(self):
-        self.title = ''
-        self.children = []
-
-class TocItem():
-
-    def __init__(self):
-        self.title = ''
-        self.url = ''
-        self.is_active = False
-        self.is_path = False
-        self.classes = ''
-        self.pagename = ''
-        self.anchor = ''
-        self.id = 0
-        self.children = []
-
 class TreeGenerator():
 
     def __init__(self, pagename : str, masterdoc : str, node : nodes.Node, prune = False):
@@ -52,17 +33,11 @@ class TreeGenerator():
                         clean_uri = item['refuri']
                         if (pos := clean_uri.find('#')) >= 0:
                             clean_uri = clean_uri[:pos]
-                        #print('      - self.dirname is', self.dirname)
-                        #print('      - refuri is', item['refuri'])
-                        #print('      - clean refuri is', clean_uri)
                         if clean_uri == '':
                             pname = self.pagename
                         else:
                             pname = os.path.normpath(os.path.join(self.dirname, clean_uri))
-                        #print('      - pname is', pname)
                         pname = pname[:-5] if pname.endswith('.html') else pname
-                        #print('      - pname is', pname)
-                        #logger.info(f"{'-> ' if pname == self.pagename else '   '}pname is {colorize('darkgreen', pname)} and self.pagename is {colorize('darkgreen',self.pagename)}")
 
                         entry = {
                             'title' : item.astext(),

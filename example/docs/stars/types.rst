@@ -7,6 +7,6 @@ Red dwarfs are the most common type of star in the universe. They are small, coo
 
 Blue giants are massive and short-lived, often ending their lives in spectacular supernovae. White dwarfs are the remnants of low-mass stars.
 
-.. sidebar:: Fun Fact
+.. note::
 
    The nearest star to Earth is Proxima Centauri, a red dwarf.

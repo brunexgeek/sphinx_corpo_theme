@@ -22,6 +22,8 @@
 
     .hero {
         margin-bottom: 2rem;
+        z-index: 200;
+        margin-top: -1px;
 
         .content {
             background-color: $cc-text-primary;
