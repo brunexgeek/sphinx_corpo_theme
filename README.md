@@ -92,4 +92,5 @@ The following [metadata fields](https://www.sphinx-doc.org/en/master/usage/restr
 |`:description:`|Short description of the content, only visible for blog posts. This value is injected as `meta` tag in the output HTML.|
 |`:last_updated:`|Date the document was last updated. If omitted, the date the HTML was generated will be used.|
 |`:title_image:`|Set the background image for a blog post header. The path is relative to the root of documentation. |
+|`:show_child_topics:`|Same as configuration option `show_child_topics`, but for the current page. |
 
