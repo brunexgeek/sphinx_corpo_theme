@@ -1,4 +1,5 @@
 {%- set lang_attr = 'en' if language == None else (language | replace('_', '-')) %}
+{%- set meta_description = meta.description if meta and meta.description else None %}
 
 {%- block html_doctype -%}
 <!DOCTYPE html>
@@ -7,6 +8,9 @@
 <head>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta charset="UTF-8">
+	{% if meta_description %}
+	<meta charset="description" context="{{ meta_description|striptags|e }}">
+	{% endif %}
 	{%- block html_title %}
 		<title>{{ title|striptags|e }} | {{ project|e }}</title>
 	{%- endblock %}
