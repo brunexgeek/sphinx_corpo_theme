@@ -38,6 +38,16 @@
        margin: auto;
     }
 
+    span.xref {
+        color: #f00;
+        text-decoration: underline;
+        text-decoration-style: wavy;
+    }
+
+    span.strikethrough {
+        text-decoration: line-through;
+    }
+
     h1 {
         padding-right: 4rem;
     }
@@ -79,6 +89,14 @@
     ul li,
     ol li {
         margin-left: 24px;
+    }
+
+    ul, ol {
+        margin-bottom: 1rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 
     ul {

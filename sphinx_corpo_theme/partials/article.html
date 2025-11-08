@@ -1,3 +1,6 @@
+{% set show_child_topics = theme_show_child_topics if theme_show_child_topics else False %}
+{% set show_child_topics = meta.show_child_topics|lower != "false" if meta and meta.show_child_topics else show_child_topics %}
+
 <article class="rst-content" role="article">
     {% if corpo_title %}
         {% if pagename == master_doc %}
@@ -10,7 +13,7 @@
     <div class="body">
         {{ corpo_body if corpo_body else body }}
     </div>
-    {% if theme_show_child_topics and corpo_local_toc_map %}
+    {% if show_child_topics and corpo_local_toc_map %}
     <div class="toctree-wrapper compound">
         <p class="caption" role="heading"><span class="caption-text">{{ _('Topics in this section') }}:</span></p>
         <ul>
