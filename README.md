@@ -2,6 +2,8 @@
 
 A Sphinx theme with a modern corporate aesthetic, including templates for conventional documentation and blog posts. The design is inspired by the [IBM documentation](https://www.ibm.com/docs/en/zos/3.2.0) as of October 2025.
 
+![Theme screenshot](example/screenshot.webp)
+
 > [!NOTE]
 > While this theme covers almost all essential functionality, it remains a work in progress and will continue to evolve.
 
@@ -78,6 +80,14 @@ Optional text displayed at the bottom of each page, typically used for legal dis
 
 ```python
 footer_statement = "Wikipedia is hosted by the Wikimedia Foundation, a non-profit organization that also hosts a range of other projects. "
+```
+
+### debug_layout
+
+If `true`, shows a floating element with the name of the layout used to render the page.
+
+```python
+debug_layout = True
 ```
 
 ## Metadata
