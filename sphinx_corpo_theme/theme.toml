@@ -16,4 +16,4 @@ toc_extra_links = []
 footer_statement= ''
 footer_links= []
 toc_pruning = false
-
+debug_layout = false

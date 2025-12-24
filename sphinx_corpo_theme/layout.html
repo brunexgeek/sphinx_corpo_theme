@@ -64,6 +64,8 @@
 			{{ js_tag(scriptfile) }}
 		{%- endfor %}
 	{%- endblock %}
+	{% if theme_debug_layout %}
 	<div class="floating-tag">{{ corpo_template }}</div>
+	{% endif %}
 </body>
 </html>
